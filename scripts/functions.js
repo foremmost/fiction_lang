@@ -29,3 +29,21 @@ function merge_arr(){
     
     return out_arr;
 }
+function quick_sort(arr){
+    if(arr.length < 2){
+        return arr;
+    }
+    let pivot = arr[0],
+        left = [],
+        right = [];
+    left =  arr.filter(function(elem){
+        return elem < pivot;
+    });
+    right =  arr.filter(function(elem){
+        return elem > pivot;
+    });
+    let sorted_left = quick_sort(left);
+    sorted_left.push(pivot);
+    let sorted_right = quick_sort(right);
+    return merge_arr(sorted_left,sorted_right);
+}
