@@ -7,6 +7,16 @@ function Fiction(){
 	_.from = _.langs[0]; // С какого языка пользователь будет переводить
 	_.to = _.langs[1]; // на какой язык будет переводить
 	_.words = {}; //
+	if(localStorage.getItem('lw')){
+		_.words_cnt = JSON.parse(localStorage.getItem('lw'));
+		document.getElementById('translate-ok').textContent = _.words_cnt['ok'];
+		document.getElementById('translate-err').textContent = _.words_cnt['err'];
+	}else{
+		_.words_cnt = {
+			ok : 0,
+			err : 0,
+		};
+	}
 	_.choose_word = function(){
 		try{
 			let ind = _.words[_.from].length-1;
@@ -39,9 +49,9 @@ function Fiction(){
 				return word.toLowerCase() == _word.toLowerCase();
 			})[0];
 			if(similar){
-				alert('Уcпех');
+				_.word_counter('success');
 			}else{
-				console.error("Ошибка")
+				_.word_counter('fail');
 			}
 		}catch (e) {
 			console.dir(e)
@@ -49,8 +59,14 @@ function Fiction(){
 	}
 	_.word_counter = function(type){
 		if(type == 'fail'){
-		 	return;
+			_.words_cnt.err++;
+		}else{
+			_.words_cnt.ok++;
 		}
+		document.getElementById('translate-ok').textContent = _.words_cnt['ok'];
+		document.getElementById('translate-err').textContent = _.words_cnt['err'];
+		console.log('Правильных: '+_.words_cnt.ok+" Ошибок: "+_.words_cnt.err);
+		localStorage.setItem('lw', JSON.stringify(_.words_cnt));
 	}
 	_.get_lang = function (lang) {
 		let prom = new Promise(  function (resolve) {
