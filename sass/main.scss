@@ -1,0 +1,55 @@
+@import "../../../../core/mixins/reset";
+@import "../../../../core/mixins/mixins.scss";
+@import "vars";
+@import "grid/grid";
+@function em($px){
+	@return $px/$font_body * 1em;
+}
+@include  font_inc($f_reg,'Montserrat-Regular.ttf')
+@include  font_inc($f_extrabold,'Montserrat-ExtraBold.ttf')
+@include  font_inc($f_light,'Montserrat-Light.ttf')
+@include  font_inc($f_semibold,'Montserrat-Semibold.ttf')
+$font_body: 14px;
+input,input::placeholder{
+	font-family: inherit;
+	color: #fff;
+}
+a{
+	color: #fff;
+}
+.set {
+	@include  wh(100%, 100%);
+	flex-direction: column;
+}
+html{
+	height: 100vh;
+	min-height: 100vh
+}
+body{
+	@include  wh(100%);
+	@include  bg(cover,url(../img/s.png),right bottom,no-repeat);
+	@include font($font_body,$f_reg,#fff)
+}
+
+@import "ui/mobile-ui";
+@import "media/mobile";
+$unit: 'px';
+@include  mq($mobile-large#{$unit}){
+	@import "ui/mobile-large-ui";
+	@import "media/mobile-large";
+}
+
+@include  mq($tablet#{$unit}){
+	@import "ui/tablet-ui";
+	@import "media/tablet";
+}
+
+@include  mq($tablet-large#{$unit}){
+	@import "ui/tablet-large-ui";
+	@import "media/tablet-large";
+}
+
+@include  mq($desktop#{$unit}){
+	@import "ui/desktop-ui";
+	@import "media/desktop";
+}

@@ -1,0 +1,105 @@
+$unit : 'px';
+.section {
+	@include w($mobile#{$unit});
+	margin:0 auto;
+}
+.head{
+	&-row{
+		padding: 10px;
+	}
+	&-logo{
+		@include font(60px,$f_extrabold);
+		span{
+			@include font(16px,$f_light);
+			display: block;
+		}
+	}
+	&-menu{
+		display: none;
+		a{
+			@include bdrs(1px);
+			display: inline-block;
+			padding: 10px 12px;
+			background-color: rgba($blue,.28);
+		}
+	}
+	&-btn{
+		padding: 5px;
+		span{
+			@include wh(30px,5px);
+			@include bdrs(4px);
+			display: block;
+			margin-bottom: 5px;
+			background: #fff;
+			&:last-child{
+				margin-bottom: 0;
+			}
+
+		}
+	}
+	&-line{
+		align-items: center;
+	}
+}
+.translate{
+	&-head,&-body{
+		padding: 10px;
+	}
+	&-head{
+		@include dfi;
+		margin-top: 1em;
+	}
+	&-title,&-word{
+		@include font(22px,$f_semibold,$purple);
+	}
+	&-word{
+		color: $orange;
+		text-decoration: underline;
+	}
+	&-form{
+		margin-top: 1em;
+	}
+	&-input{
+		@include wh(100%,45px);
+		@include bdrs(5px);
+		background-color: rgba(#232323,.7);
+		display: block;
+		border: 2px solid $purple;
+		padding-left: 5px;
+	}
+	&-log{
+		&-head{
+			display: flex;
+			justify-content: space-around;
+		}
+		&-body{
+			margin-top:  1em;
+			border: 1px solid #fff;
+			background-color: rgba(#232323,.7);
+			li{
+				@include dfi;
+				padding: 20px 10px;
+			}
+		}
+	}
+	&-ok,&-err{
+		display: flex;
+		align-items: center;
+		&:before {
+			@include af;
+			@include wh(40px);
+			margin-right: 10px;
+		}
+	}
+	&-ok{
+		&:before{
+			@include bg(40px 40px,url(../img/confirm.svg))
+		}
+
+	}
+	&-err{
+		&:before {
+			@include bg(40px 40px, url(../img/cancel.svg))
+		}
+	}
+}

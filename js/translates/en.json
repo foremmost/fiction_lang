@@ -1,0 +1,20 @@
+{
+	"en":[
+		{ 
+			"id":1, 
+			"words":
+				[
+					"test",
+					"testing"
+				] 
+		},
+		{ 
+			"id":2, 
+			"words":
+				[
+					"human",
+					"people"
+				] 
+		}
+	]
+}

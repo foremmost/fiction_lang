@@ -1,0 +1,31 @@
+extends template/main
+append vars
+  -
+    page_title= 'Главная'
+block content
+  .translate
+    .section
+        .bricks
+          .m12.t7.tl5
+            .translate-head
+              .translate-title Перевести:
+              .translate-word#translate-word Тестовый
+          .tl10
+            .pallet
+          .m12.t7.tl5
+            .translate-body
+              form.translate-form(onsubmit="return false;")
+                input(placeholder='Введите перевод').translate-input#user-input
+          .tl3
+            .translate-log
+              .translate-log-head
+                .translate-ok
+                  span 1
+                .translate-err
+                  span 2
+              ul.translate-log-body
+                -for(let i=0;i<10;i++)
+                  li
+                    strong people
+                    b :
+                    span смертный

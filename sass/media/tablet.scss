@@ -1,0 +1,16 @@
+.section {
+	@include w($tablet#{$unit})
+}
+.head{
+	&-btn{
+		display: none;
+	}
+	&-menu{
+		display: block;
+	}
+}
+.translate{
+	&-head,&-body{
+		padding: 0;
+	}
+}

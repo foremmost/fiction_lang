@@ -1,0 +1,9 @@
+$unit: 'px';
+.section{
+    @include w($desktop#{$unit});
+}
+.translate{
+    &-log{
+        margin-left: 30px;
+    }
+}
